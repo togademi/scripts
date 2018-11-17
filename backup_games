@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# Makes a backup of the save files of my games.
+#
+# How to use:
+# Set BACKUP_DIR to your path where you want to store the backups (for example ~/backup/)
+# And that's it, run the script
+#
+# Tomas Garcia de Miguel
+# https://github.com/togademi
+
+BACKUP_DIR=~/backup/
+
+
+backup_game() {
+  if [ -d "$1" ]; then
+    cp -ru "$1" "$BACKUP_DIR"
+
+    if [ $? -eq 0 ]; then
+      echo "$2 backed up"
+    fi
+  fi
+}
+
+
+# NightSky
+backup_game ~/.local/share/nightsky/ "NightSky"
+
+# LYNE
+backup_game ~/".config/unity3d/Thomas Bowker/LYNE/" "LYNE"
+
+# FasterThanLight
+backup_game ~/.local/share/FasterThanLight/ "FasterThanLight"
+
+exit 0
