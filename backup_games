@@ -30,6 +30,8 @@ backup_game() {
 
     if [ $? -eq 0 ]; then
       echo "$2 backed up"
+    else
+      echo "WARNING: $2 failed to back up"
     fi
   fi
 }
