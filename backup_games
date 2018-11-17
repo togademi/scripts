@@ -2,16 +2,28 @@
 #
 # Makes a backup of the save files of my games.
 #
-# How to use:
-# Set BACKUP_DIR to your path where you want to store the backups (for example ~/backup/)
-# And that's it, run the script
+# HOW TO USE:
+# Run ./backup_games YOUR_BACKUP_FOLDER
+# For example ./backup_games ~/backup/
 #
 # Tomas Garcia de Miguel
 # https://github.com/togademi
 
-BACKUP_DIR=~/backup/
 
+if [ $# -ne 0 ]; then
+  BACKUP_DIR="$1"
+else
+  BACKUP_DIR=~/backup/
+fi
 
+##############################################
+# Backups the save files of the game
+# Globals:
+#   BACKUP_DIR
+# Arguments:
+#   Directory of the game save files (path)
+#   Name of the game (string)
+##############################################
 backup_game() {
   if [ -d "$1" ]; then
     cp -ru "$1" "$BACKUP_DIR"
