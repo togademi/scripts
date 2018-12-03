@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Deletes files in Downloads folder older than 7 days.
+#
+# HOW TO USE:
+# Run ./download_clean
+#
+# Tomas Garcia de Miguel
+# https://github.com/togademi
+
+find ~/Downloads/* -mtime +7 -exec rm -rf {} \;
+
+exit 0

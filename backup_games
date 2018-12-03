@@ -4,7 +4,7 @@
 #
 # HOW TO USE:
 # Run ./backup_games YOUR_BACKUP_FOLDER
-# For example ./backup_games ~/backup/
+# For example ./backup_games ~/backup/games/
 #
 # Tomas Garcia de Miguel
 # https://github.com/togademi
@@ -12,9 +12,12 @@
 
 if [ $# -ne 0 ]; then
   BACKUP_DIR="$1"
+elif [ -d /mnt/c/Users/ ]; then
+  BACKUP_DIR=/mnt/d/backup/games/
 else
-  BACKUP_DIR=~/backup/
+  BACKUP_DIR=~/backup/games/
 fi
+
 
 ##############################################
 # Backups the save files of the game
@@ -37,6 +40,10 @@ backup_game() {
 }
 
 
+##############
+# Linux games
+##############
+
 # NightSky
 backup_game ~/.local/share/nightsky/ "NightSky"
 
@@ -45,5 +52,16 @@ backup_game ~/".config/unity3d/Thomas Bowker/LYNE/" "LYNE"
 
 # FasterThanLight
 backup_game ~/.local/share/FasterThanLight/ "FasterThanLight"
+
+# Pony Island
+backup_game ~/".config/unity3d/Daniel Mullins Games/Pony Island/" "Pony Island"
+
+
+#################
+# Windows games
+#################
+
+# Dark Souls 3
+backup_game /mnt/c/Users/Tomas/AppData/Roaming/DarkSoulsIII/ "Dark Souls 3"
 
 exit 0
