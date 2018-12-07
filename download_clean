@@ -8,6 +8,6 @@
 # Tomas Garcia de Miguel
 # https://github.com/togademi
 
-find ~/Downloads/* -mtime +7 -exec rm -rf {} \;
+find ~/Downloads/* ! -name 'download_clean' -mtime +7 -exec rm -rf {} \;
 
 exit 0
