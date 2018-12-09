@@ -1,13 +1,18 @@
 #!/bin/sh
 #
-# Deletes files in Downloads folder older than 7 days.
+# Moves to trash files in Downloads folder older than 7 days.
 #
 # HOW TO USE:
-# Run ./download_clean
+# Put download_clean in $HOME/bin
+# Execute "export PATH=$PATH:$HOME/bin"
+# Execute "chmod +x $HOME/bin/download_clean"
+# Execute "download_clean"
 #
 # Tomas Garcia de Miguel
 # https://github.com/togademi
 
-find ~/Downloads/* ! -name 'download_clean' -mtime +7 -exec rm -rf {} \;
+TRASH=~/.local/share/Trash/files/
+
+find ~/Downloads/* -maxdepth 1 -type f -mtime +7 -exec mv -fv $TRASH {} \;
 
 exit 0
