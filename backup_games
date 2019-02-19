@@ -5,19 +5,18 @@
 # HOW TO USE:
 # Run ./backup_games YOUR_BACKUP_FOLDER
 # For example ./backup_games ~/backup/games/
-# If backing up Windows games, change WIN_USER below with your Windows username
+# Put your Windows username below (if using Windows)
+WIN_USER="Tomas"
 #
 # Tomas Garcia de Miguel
 # https://github.com/togademi
 
-WIN_USER="Tomas"
-
-ON_WIN=false
+ON_LINUX=true
 if [ $# -ne 0 ]; then
   BACKUP_DIR="$1"
 elif [ -d /mnt/c/Users/ ]; then
   BACKUP_DIR=/mnt/d/backup/games/
-  ON_WIN=true
+  ON_LINUX=false
 else
   BACKUP_DIR=~/backup/games/
 fi
@@ -44,30 +43,33 @@ backup_game() {
 }
 
 
-if [ $ON_WIN = false ]; then # Linux games
+if [ $ON_LINUX = true ]; then # Linux games
 
-    # NightSky
-    backup_game ~/.local/share/nightsky/ "NightSky"
+  # NightSky
+  backup_game ~/.local/share/nightsky/ "NightSky"
 
-    # LYNE
-    backup_game ~/".config/unity3d/Thomas Bowker/LYNE/" "LYNE"
+  # LYNE
+  backup_game ~/".config/unity3d/Thomas Bowker/LYNE/" "LYNE"
 
-    # FasterThanLight
-    backup_game ~/.local/share/FasterThanLight/ "FasterThanLight"
+  # FasterThanLight
+  backup_game ~/.local/share/FasterThanLight/ "FasterThanLight"
 
-    # Pony Island
-    backup_game ~/".config/unity3d/Daniel Mullins Games/Pony Island/" "Pony Island"
+  # Pony Island
+  backup_game ~/".config/unity3d/Daniel Mullins Games/Pony Island/" "Pony Island"
 
 else # Windows games
 
-    # Dark Souls 3
-    backup_game /mnt/c/Users/"$WIN_USER"/AppData/Roaming/DarkSoulsIII/ "Dark Souls 3"
+  # Dark Souls 3
+  backup_game /mnt/c/Users/"$WIN_USER"/AppData/Roaming/DarkSoulsIII/ "Dark Souls 3"
 
-    # Overcooked
-    backup_game /mnt/c/Users/"$WIN_USER"/AppData/LocalLow/"Ghost Town Games"/Overcooked/ "Overcooked"
+  # Overcooked
+  backup_game /mnt/c/Users/"$WIN_USER"/AppData/LocalLow/"Ghost Town Games"/Overcooked/ "Overcooked"
 
-    # The Messenger
-    backup_game /mnt/c/Users/"$WIN_USER"/AppData/LocalLow/"Sabotage Studio"/"The Messenger"/ "The Messenger"
+  # The Messenger
+  backup_game /mnt/c/Users/"$WIN_USER"/AppData/LocalLow/"Sabotage Studio"/"The Messenger"/ "The Messenger"
+
+  # Subnautica
+  backup_game /mnt/c/Users/"$WIN_USER"/AppData/LocalLow/"Unknown Worlds"/Subnautica/Subnautica/ "Subnautica"
 fi
 
 exit 0
