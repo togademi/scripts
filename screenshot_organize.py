@@ -3,6 +3,9 @@ import os
 import re
 import shutil
 
+# Tomas Garcia de Miguel
+# https://github.com/togademi
+
 screenshots_dir = os.getcwd()
 
 def is_steam(filename):
